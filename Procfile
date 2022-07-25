@@ -1,0 +1,1 @@
+web: gunicorn marketPlace.wsgi
