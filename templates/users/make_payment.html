@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Title -->
+    <section class="page-title style-two"
+             style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+        <div class="auto-container">
+            <div class="content-box centred mr-0">
+                <div class="title">
+                    <h1>Client Subscription Plan</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'landing_page' %}">Home</a></li>
+                    <li>Subscription Payment</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+
+    <!-- contact-section -->
+    <section class="contact-section bg-color-2">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12 col-sm-12 info-column">
+                    <div class="contact-info-inner">
+                        <div class="sec-title">
+                            <span>Pay for Subscription</span>
+                        </div>
+                        <div class="single-box">
+                            <h4>Important Information</h4>
+                            <p>Some details concerning the subscription that the user is about to pay for</p>
+                        </div>
+                        <div class="single-box">
+                            <h3>Help Info</h3>
+                            <p>How the clients get assistance and help on using the platform can be found here...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 form-column">
+                    <div class="form-inner">
+                        <h2>Subscription Plan Payment</h2>
+                        <form method="post" enctype="multipart/form-data"
+                              id="contact-form" class="default-form">
+                            <div class="form-group">
+                                {% csrf_token %}
+                                {{ form }}
+                                <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn mt-5">
+                                    <button class="theme-btn-one" type="submit" name="submit-form">Pay / Subscribe</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact-section end -->
+
+{% endblock %}

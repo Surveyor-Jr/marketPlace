@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Title -->
+    <section class="page-title style-two"
+             style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+        <div class="auto-container">
+            <div class="content-box centred mr-0">
+                <div class="title">
+                    <h1>My Account Management</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'landing_page' %}">Home</a></li>
+                    <li>My Account Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+
+    <!-- category-details -->
+    <section class="category-details bg-color-2">
+        <div class="auto-container">
+            <div class="row clearfix">
+                {# Include the Account Menu  #}
+                {% include 'users/account_menu.html' %}
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    {# Messages #}
+                    {% include 'messages.html' %}
+                    {# End of Messages #}
+                    <div class="category-details-content">
+                        <div class="item-shorting clearfix">
+                            <div class="text pull-left">
+                                <h3>{{ user.last_name }}</h3>
+                                <br>
+                                <h3>{{ user.first_name }}</h3>
+                            </div>
+                            <div class="right-column pull-right clearfix">
+                                {# display user profile pic #}
+                                <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" width="150"
+                                     height="150" alt="profile_image">
+                            </div>
+                        </div>
+                    </div>
+                    {# Profile Editing Section #}
+                    <div class="category-details-content">
+                        <div class="item-shorting clearfix">
+                            <div class="text pull-left mb-3">
+                                <h3>Edit Account Profile</h3>
+                            </div>
+                            <div class="form-inner">
+                                <form method="post" id="contact-form" class="default-form">
+                                    <div class="form-group">
+                                        {% csrf_token %}
+                                        {{ u_form }}
+                                        {{ p_form }}
+                                        <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn mt-5">
+                                            <button class="btn btn-primary" type="submit" name="submit-form">Update
+                                                Profile
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {# End Profile Editing Section  #}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- category-details end -->
+
+
+{% endblock %}

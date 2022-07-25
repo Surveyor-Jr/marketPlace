@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Title -->
+    <section class="page-title style-two"
+             style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+        <div class="auto-container">
+            <div class="content-box centred mr-0">
+                <div class="title">
+                    <h1>My Account Management</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'landing_page' %}">Home</a></li>
+                    <li>My Account Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+
+    <!-- category-details -->
+    <section class="category-details bg-color-2">
+        <div class="auto-container">
+            <div class="row clearfix">
+                {# Include the Account Menu  #}
+                {% include 'users/account_menu.html' %}
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    <div class="category-details-content">
+                        <div class="item-shorting clearfix">
+                            <div class="text pull-left">
+                                <h3>{{ user.last_name }}</h3>
+                                <br>
+                                <h3>{{ user.first_name }}</h3>
+                            </div>
+                            <div class="right-column pull-right clearfix">
+                                {# display user profile pic #}
+                                <img class="rounded-circle" src="{{ user.profile.profile_pic.url }}" width="150"
+                                     height="150" alt="profile_image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="category-details-content">
+                        <div class="item-shorting clearfix">
+                            <div class="text">
+                                <h3>Subscription Status</h3>
+                            </div>
+                            <div class="text">
+                                {# Status Notification #}
+                                {# Check if current subscription expired #}
+
+                                {% now "Y-m-d" as todays_date %}
+                                {% if todays_date < status.expire_date|date:"Y-m-d" %}
+                                    <div class="alert alert-success alert-outline-coloured alert-dismissible"
+                                         role="alert">
+                                        <div class="alert-icon">
+                                            <i class="far fa-fw fa-bell"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <strong>You are all paid up. Next payment can be done
+                                                on {{ status.expire_date }}</strong>
+                                        </div>
+
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert-warning alert-outline-coloured alert-dismissible"
+                                         role="alert">
+                                        <div class="alert-icon">
+                                            <i class="far fa-fw fa-bell"></i>
+                                        </div>
+                                        <div class="alert-message">
+                                            <strong>You last subscription expired on {{ status.expire_date }}. Top-up to
+                                                continue using this service </strong>
+                                        </div>
+                                    </div>
+                                    {# Instructions, Steps and Information #}
+                                    <p>Payment instructions and information here</p>
+                                    </div>
+                                    {# Button to proceed to payment page #}
+                                    <div class="mb-3">
+                                        <a href="{% url 'make_payment' %}" type="button" class="btn btn-primary">Proceed
+                                            to Payment</a>
+                                        <button class="btn btn-warning" disabled>Cancel Subscription</button>
+                                    </div>
+
+                                {% endif %}
+                        </div>
+                    </div>
+                {# Subscription Records #}
+                <div class="category-details-content">
+                        <div class="item-shorting clearfix">
+                            <div class="text">
+                                <h3>Subscription History (Records)</h3>
+                            </div>
+                            <div class="text">
+                                {# Table of Records  #}
+                                <table id="datatables-clients" class="table table-striped" style="width:100%">
+                                <thead>
+                                <tr>
+                                    <th>Reference #</th>
+                                    <th>Paid on</th>
+                                    <th>Expires</th>
+                                    <th>Payment Method</th>
+                                    <th>Amount</th>
+{#                                    <th>Status</th>#}
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for trans in payment_records %}
+                                <tr>
+                                    <td>{{ trans.reference_code }}</td>
+                                    <td>{{ trans.paid_on }}</td>
+                                    <td>{{ trans.expire_date }}</td>
+                                    <td>{{ trans.payment_method }}</td>
+                                    <td>{{ trans.amount }}</td>
+{#                                    <td><span class="badge bg-success">{{ trans.payment_status }}</span></td>#}
+                                    <td><a href="{% url 'invoice_detail' trans.slug %}" type="button" class="btn btn-outline-dark">View Invoice</a></td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                                {# Table of Records Ends #}
+                            </div>
+                    </div>
+                {# Subscriptions Records End #}
+                </div>
+            </div>
+        </div>
+
+        </div>
+        </div>
+    </section>
+    <!-- category-details end -->
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Title -->
+    <section class="page-title style-two" style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+        <div class="auto-container">
+            <div class="content-box centred mr-0">
+                <div class="title">
+                    <h1>Sign up</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'landing_page' %}">Home</a></li>
+                    <li>Sign up</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+
+    <!-- signup-section -->
+    <section class="login-section signup-section bg-color-2">
+        <div class="auto-container">
+            <div class="inner-container">
+                <div class="inner-box">
+                    <h2>Sign up</h2>
+                    <div class="other-content centred">
+                        <ul class="social-links clearfix">
+                            <li><a href="#"><i class="fab fa-facebook-f"></i>Login with Facebook</a></li>
+                            <li><a href="#"><i class="fab fa-google-plus-g"></i>Login with Google</a></li>
+                        </ul>
+                        <div class="text"><span>or</span></div>
+                    </div>
+                    <form  method="post"
+                          class="signup-form">
+                        <div class="form-group">
+                            {% csrf_token %}
+                            {{ form }}
+                        </div>
+                        <div class="form-group message-btn">
+                            <button type="submit" class="theme-btn-one">Sign up</button>
+                        </div>
+                    </form>
+                    <div class="othre-text centred">
+                        <p>Already have an account? <a href="{% url 'login' %}">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- signup-section end -->
+
+{% endblock %}

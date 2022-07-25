@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Page Title -->
+    <section class="page-title style-two" style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+        <div class="auto-container">
+            <div class="content-box centred mr-0">
+                <div class="title">
+                    <h1>Browse Ads Grid</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>Browse Ads Grid</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+    <!-- category-details -->
+    <section class="category-details bg-color-2">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                    <div class="default-sidebar category-sidebar">
+                        <div class="sidebar-search sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Search</h3>
+                            </div>
+                            <div class="widget-content">
+                                <form action="https://azim.commonsupport.com/Clasifico/category-details.html"
+                                      method="post" class="search-form">
+                                    <div class="form-group">
+                                        <input type="search" name="search-field" placeholder="Search Keyword..."
+                                               required="">
+                                        <button type="submit"><i class="icon-2"></i></button>
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="icon-3"></i>
+                                        <select class="wide">
+                                            <option data-display="Select Location">Select Location</option>
+                                            <option value="1">California</option>
+                                            <option value="2">New York</option>
+                                            <option value="3">Sun Francis</option>
+                                            <option value="4">Shicago</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <i class="icon-4"></i>
+                                        <select class="wide">
+                                            <option data-display="Select Category">Select Category</option>
+                                            <option value="1">Education</option>
+                                            <option value="2">Restaurant</option>
+                                            <option value="3">Real Estate</option>
+                                            <option value="4">Home Appliances</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="sidebar-category sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Category</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="category-list">
+                                    <li><a href="category-details.html">All</a></li>
+                                    <li><a href="category-details.html">Air Condition</a></li>
+                                    <li class="dropdown">
+                                        <a href="category-details.html" class="current">Ellectronics</a>
+                                        <ul>
+                                            <li><a href="category-details.html">Computers</a></li>
+                                            <li><a href="category-details.html">Drones</a></li>
+                                            <li><a href="category-details.html">Phones</a></li>
+                                            <li><a href="category-details.html">Watches</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="category-details.html">Furniture</a></li>
+                                    <li class="dropdown">
+                                        <a href="category-details.html">Health & Beauty</a>
+                                        <ul>
+                                            <li><a href="category-details.html">Spa</a></li>
+                                            <li><a href="category-details.html">Messages</a></li>
+                                            <li><a href="category-details.html">Fitness</a></li>
+                                            <li><a href="category-details.html">Injuries</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="category-details.html">Automotive</a></li>
+                                    <li><a href="category-details.html">Real Estate</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="price-filter sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Pricing range</h3>
+                            </div>
+                            <div class="price-range">
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                        <input type="text" name="min_price" placeholder="Min">
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                        <input type="text" name="max_price" placeholder="Max">
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                        <button type="submit" class="theme-btn-one">Apply price</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    <div class="category-details-content">
+                        <div class="item-shorting clearfix">
+                            <div class="text pull-left">
+                                <p><span>Search Reasults:</span> Showing 1-6 of 20 Listings</p>
+                            </div>
+                            <div class="right-column pull-right clearfix">
+                                <div class="select-box">
+                                    <select class="wide">
+                                        <option data-display="Sort by: Default">Sort by: Default</option>
+                                        <option value="1">Default Sort 01</option>
+                                        <option value="2">Default Sort 02</option>
+                                        <option value="3">Default Sort 03</option>
+                                        <option value="4">Default Sort 04</option>
+                                    </select>
+                                </div>
+                                <div class="menu-box">
+                                    <button class="list-view"><i class="icon-31"></i></button>
+                                    <button class="grid-view on"><i class="icon-30"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="category-block wrapper grid browse-add">
+                            <div class="grid-item feature-style-two four-column pd-0">
+                                <div class="row clearfix">
+                                    {% for ad in ad_item %}
+                                        <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+                                            <div class="feature-block-one">
+                                                <div class="inner-box">
+                                                    <div class="image-box">
+                                                        <figure class="image"><img
+                                                                src="{{ ad.cover_image.url }}" alt="">
+                                                        </figure>
+                                                        <div class="shape"></div>
+                                                        <div class="feature">Featured</div>
+                                                        <div class="icon">
+                                                            <div class="icon-shape"></div>
+                                                            <i class="icon-16"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lower-content">
+                                                        <div class="category"><i class="fas fa-tags"></i>
+                                                            <p>Electronics</p></div>
+                                                        <h4><a href="{% url 'ad_detail' ad.slug ad.pk %}">{{ ad.item_name }}</a>
+                                                        </h4>
+                                                        <ul class="rating clearfix">
+                                                            <li><i class="icon-17"></i></li>
+                                                            <li><i class="icon-17"></i></li>
+                                                            <li><i class="icon-17"></i></li>
+                                                            <li><i class="icon-17"></i></li>
+                                                            <li><i class="icon-17"></i></li>
+                                                            <li><a href="index-2.html">(32)</a></li>
+                                                        </ul>
+                                                        <ul class="info clearfix">
+                                                            <li><i class="far fa-clock"></i>1 months ago</li>
+                                                            <li><i class="fas fa-map-marker-alt"></i>G87P, Birmingham,
+                                                                UK
+                                                            </li>
+                                                        </ul>
+                                                        <div class="lower-box">
+                                                            <h5>$3,000.00</h5>
+                                                            <ul class="react-box">
+                                                                <li><a href="index-2.html"><i class="icon-21"></i></a>
+                                                                </li>
+                                                                <li><a href="index-2.html"><i class="icon-22"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination-wrapper centred">
+                            <ul class="pagination clearfix">
+                                <li><a href="category-details.html"><i class="far fa-angle-left"></i>Prev</a></li>
+                                <li><a href="category-details.html" class="current">01</a></li>
+                                <li><a href="category-details.html">02</a></li>
+                                <li><a href="category-details.html">03</a></li>
+                                <li><a href="category-details.html">Next<i class="far fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- category-details end -->
+
+{% endblock %}
