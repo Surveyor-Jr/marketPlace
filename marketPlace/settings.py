@@ -146,8 +146,8 @@ LOGOUT_REDIRECT_URL = 'landing_page'
 
 # Configure PayNow Payments
 paynow = Paynow(
-    env('PAYNOW_ID'),
-    env('PAYNOW_KEY'),
+    '10735',
+    '3097f271-3e91-43d0-99e4-671db637db95',
     'https://medi-diagnosis.herokuapp.com/account/billing',
     'https://medi-diagnosis.herokuapp.com/account/billing'
 )
