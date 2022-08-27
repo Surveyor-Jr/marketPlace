@@ -806,7 +806,7 @@
                                     <div class="feature-block-one wow fadeInDown animated animated" data-wow-delay="00ms" data-wow-duration="1500ms">
                                         <div class="inner-box">
                                             <div class="image-box">
-                                                <figure class="image"><img src="{{ item.cover_image.url }}" alt=""></figure>
+                                                <figure class="image"><img src="{{ item.cover_image.url }}" alt="{{ item.item_name }}"></figure>
                                                 <div class="shape"></div>
                                                 <div class="feature">{{ item.item_type }}</div>
                                                 <div class="icon">
@@ -823,7 +823,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="category"><i class="fas fa-tags"></i><p>{{ item.item_category }}</p></div>
-                                                <h3><a href="browse-ads-details.html">{{ item.item_name }}</a></h3>
+                                                <h3><a href="{% url 'ad_detail' item.slug item.pk %}">{{ item.item_name }}</a></h3>
                                                 <ul class="rating clearfix">
                                                     <li><i class="icon-17"></i></li>
                                                     <li><i class="icon-17"></i></li>
