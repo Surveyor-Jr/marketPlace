@@ -16,6 +16,11 @@ PAYMENT_METHOD = (
     ('ecocash', 'Ecocash'), ('onemoney', 'OneMoney'),
 )
 
+SUBSCRIPTION_PLAN = (
+    ('800', 'Starter ($1.00)'),
+    ('4000', 'Premium ($5.00)'),
+)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -50,7 +55,8 @@ class Billing(models.Model):
     phone = models.CharField(max_length=10, help_text='Mobile Number - (e.g. 0776887606')
     paid_on = models.DateTimeField(auto_now_add=True)
     # TODO: subscription_plan_type -> user selects between 1. basic 2. premium and 3. platinum
-    amount = models.FloatField()
+    amount = models.CharField(max_length=50, choices=SUBSCRIPTION_PLAN, verbose_name='Subscription Plan',
+                              help_text='For pricing refer to the pricing models <a href="#">here</a>')
     payment_method = models.CharField(max_length=10, choices=PAYMENT_METHOD)
     expire_date = models.DateField(default=date.today() + timedelta(days=30))
     reference_code = models.TextField(default=''.join(random.choices(string.ascii_lowercase + string.digits, k=20)))

@@ -7,7 +7,6 @@ from django.contrib import messages
 
 from users.models import Billing, Profile
 
-
 def validate_email(value):
     if User.objects.filter(email=value).exists():
         raise ValidationError(f"{value} is taken.", params={'value': value})
@@ -77,13 +76,9 @@ class PaymentForm(ModelForm):
         'class': 'form-control',
         'id': 'phone',
     }))
-    amount = forms.CharField(required=False, label='Amount Due (ZWL)', widget=forms.TextInput(attrs={
-        'class': 'form-control mb-3',
-        'id': 'price',
-        'readonly': True,
-        'value': 1
-    }))
+    # amount = forms.CharField(required=True, label='Select Subscription Plan', widget=forms.Select(
+    #     choices=SUBSCRIPTION_PLAN))
 
     class Meta:
         model = Billing
-        fields = ('email', 'phone', 'amount', 'payment_method')
+        fields = ('email', 'amount', 'phone', 'payment_method')

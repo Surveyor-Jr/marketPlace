@@ -29,6 +29,20 @@
     <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
     <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet">
 
+    {# Leaflet #}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+
+    <style>
+		.leaflet-container {
+			height: 400px;
+			width: 600px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>
+
+
 </head>
 
 
@@ -64,7 +78,7 @@
                         <nav class="main-menu navbar-expand-md navbar-light">
                             <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                 <ul class="navigation clearfix">
-                                    <li class="dropdown"><a href="index-2.html">Categories</a>
+                                    <li class="dropdown"><a href="#">Categories</a>
                                         <div class="megamenu">
                                             <div class="row clearfix">
                                                 <div class="col-xl-6 column">
@@ -92,10 +106,10 @@
                                     </li>
                                     <li class="dropdown"><a href="#">Info</a>
                                         <ul>
-                                            <li><a href="#">About Us</a></li>
-                                            <li><a href="#">Faq'S</a></li>
-                                            <li><a href="#">Pricing</a></li>
-                                            <li><a href="#">Contact Us</a></li>
+                                            <li><a href="{% url 'about_us' %}">About Us</a></li>
+                                            <li><a href="{% url 'faq' %}">Faq'S</a></li>
+                                            <li><a href="#pricing">Pricing</a></li>
+                                            <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Blog</a></li>
@@ -130,7 +144,7 @@
             <div class="auto-container">
                 <div class="outer-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="index-2.html"><img src="{% static 'assets/images/logo.png' %}"
+                        <figure class="logo"><a href="{% url 'landing_page' %}"><img src="{% static 'assets/images/logo.png' %}"
                                                                          alt=""></a></figure>
                     </div>
                     <div class="menu-area">
@@ -189,18 +203,18 @@
                     <div class="row clearfix">
                         <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
                             <div class="footer-widget logo-widget">
-                                <figure class="footer-logo"><a href="index-2.html"><img
+                                <figure class="footer-logo"><a href="#"><img
                                         src="{% static 'assets/images/footer-logo.png' %}" alt=""></a></figure>
                                 <div class="text">
-                                    <p>Lorem ipsum dolor amet consetetur adi pisicing elit sed eiusm tempor in cididunt
-                                        ut labore dolore magna aliqua enim ad minim venitam</p>
+                                    <p>Zimbabwe's number <strong>1</strong> and <strong>BIGGEST</strong> virtual
+                                        marketspace. Digital and secure place to meet your next supplier and client</p>
                                 </div>
                                 <ul class="social-links clearfix">
-                                    <li><a href="index-2.html"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="index-2.html"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="index-2.html"><i class="fab fa-instagram"></i></a></li>
-                                    <li><a href="index-2.html"><i class="fab fa-google-plus-g"></i></a></li>
-                                    <li><a href="index-2.html"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -211,12 +225,12 @@
                                 </div>
                                 <div class="widget-content">
                                     <ul class="links-list clearfix">
-                                        <li><a href="index-2.html">About Us</a></li>
-                                        <li><a href="index-2.html">Listing</a></li>
-                                        <li><a href="index-2.html">How It Works</a></li>
-                                        <li><a href="index-2.html">Our Services</a></li>
-                                        <li><a href="index-2.html">Our Blog</a></li>
-                                        <li><a href="index-2.html">Contact Us</a></li>
+                                        <li><a href="{% url 'about_us' %}">About Us</a></li>
+                                        <li><a href="{% url 'ad_list_view' %}">Listing</a></li>
+                                        <li><a href="#">How It Works</a></li>
+                                        <li><a href="#">Our Services</a></li>
+                                        <li><a href="#">Our Blog</a></li>
+                                        <li><a href="{% url 'contact_us' %}">Contact Us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -230,7 +244,7 @@
                                     <div class="post">
                                         <figure class="post-thumb">
                                             <img src="{% static 'assets/images/resource/footer-post-1.jpg' %}" alt="">
-                                            <a href="blog-details.html"><i class="fas fa-link"></i></a>
+                                            <a href="#"><i class="fas fa-link"></i></a>
                                         </figure>
                                         <h5><a href="blog-details.html">The Added Value Social Worker</a></h5>
                                         <p>Mar 25, 2020</p>
@@ -255,15 +269,15 @@
                                     <ul class="info-list clearfix">
                                         <li>
                                             <i class="fas fa-map-marker-alt"></i>
-                                            Flat 20, Reynolds Neck, North Helenaville, FV77 8WS
+                                            Midlands State University, 9055 Senga Road
                                         </li>
                                         <li>
                                             <i class="fas fa-microphone"></i>
-                                            <a href="tel:23055873407">+2(305) 587-3407</a>
+                                            <a href="tel:23055873407">+(263)-77-902-7357</a>
                                         </li>
                                         <li>
                                             <i class="fas fa-envelope"></i>
-                                            <a href="mailto:info@example.com">info@example.com</a>
+                                            <a href="mailto:info@example.com">info@market-square.com</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -276,11 +290,11 @@
         <div class="footer-bottom">
             <div class="auto-container">
                 <div class="footer-inner clearfix">
-                    <div class="copyright pull-left"><p><a href="index-2.html">Clasifico</a> &copy; 2020 All Right
+                    <div class="copyright pull-left"><p><a href="#">Clasifico</a> &copy; {% now "Y" %} All Rights
                         Reserved</p></div>
                     <ul class="footer-nav pull-right clearfix">
-                        <li><a href="index-2.html">Terms of Service</a></li>
-                        <li><a href="index-2.html">Privacy Policy</a></li>
+                        <li><a href="{% url 'terms_and_conditions' %}">Terms of Service</a></li>
+                        <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -311,7 +325,6 @@
 <!-- main-js -->
 <script src="{% static 'assets/js/script.js' %}"></script>
 
-</body><!-- End of .page_wrapper -->
+</body>
 
-<!-- Mirrored from azim.commonsupport.com/Clasifico/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Jul 2022 19:50:40 GMT -->
 </html>

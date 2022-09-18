@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+     <!-- Page Title -->
+        <section class="page-title style-two" style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+            <div class="auto-container">
+                <div class="content-box centred mr-0">
+                    <div class="title">
+                        <h1>Contact Us</h1>
+                    </div>
+                    <ul class="bread-crumb clearfix">
+                        <li><a href="{% url 'landing_page' %}">Home</a></li>
+                        <li>Contact Us</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End Page Title -->
+
+
+        <!-- contact-section -->
+        <section class="contact-section bg-color-2">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-12 col-sm-12 info-column">
+                        <div class="contact-info-inner">
+                            <div class="sec-title">
+                                <span>Contact Us</span>
+                                <h2>Our Contacts & Location</h2>
+                            </div>
+                            <div class="single-box">
+                                <h3>Opening hours</h3>
+                                <ul class="list clearfix">
+                                    <li>Daily: 9.30 AM–6.00 PM</li>
+                                    <li>Sunday & Holidays: Closed</li>
+                                </ul>
+                            </div>
+                            <div class="single-box">
+                                <h3>Contact info</h3>
+                                <ul class="list clearfix">
+                                    <li>77408 Satterfield Motorway Suite <br />469 New Antonetta, BC K3L6P6</li>
+                                    <li><a href="mailto:example@info.com">example@info.com</a></li>
+                                    <li><a href="tel:6174959400326">(617) 495-9400-326</a></li>
+                                </ul>
+                            </div>
+                            <div class="single-box">
+                                <h3>Social contact</h3>
+                                <ul class="social-links clearfix">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-sm-12 form-column">
+                        <div class="form-inner">
+                            <h2>Get in Touch</h2>
+                            <form method="post" action="https://azim.commonsupport.com/Clasifico/sendemail.php" id="contact-form" class="default-form">
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                        <label>Your Name *</label>
+                                        <input type="text" name="username" required="">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                        <label>Your Email *</label>
+                                        <input type="email" name="email" required="">
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                        <label>Your Phone</label>
+                                        <input type="text" name="phone" required="">
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                        <label>Subject</label>
+                                        <input type="text" name="subject" required="">
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                        <label>Your Message ...</label>
+                                        <textarea name="message"></textarea>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                                        <button class="theme-btn-one" type="submit" name="submit-form">Submit Now</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- contact-section end -->
+
+
+        <!-- google-map-section -->
+        <section class="google-map-section">
+            <div class="contact-map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3862937.897326288!2d26.908442230253062!3d-19.002074991491394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1931a4e706b17161%3A0xa1c0385fc5cbbfee!2sZimbabwe!5e0!3m2!1sen!2sbd!4v1663533180133!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+        </section>
+        <!-- google-map-section end -->
+
+{% endblock %}
