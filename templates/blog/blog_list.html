@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Title -->
+    <section class="page-title style-two"
+             style="background-image: url({% static 'assets/images/background/page-title.jpg' %});">
+        <div class="auto-container">
+            <div class="content-box centred mr-0">
+                <div class="title">
+                    <h1>Blog</h1>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{% url 'landing_page' %}">Home</a></li>
+                    <li>Blog Home</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title -->
+
+
+    <!-- sidebar-page-container -->
+    <section class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    <div class="blog-standard-content">
+                        {% for article in blog %}
+                            <div class="news-block-one">
+                                <div class="inner-box">
+                                    <figure class="image-box">
+                                        <img src="{{ article.featured_image.url }}" alt="" width="700" height="470">
+                                        <a href="{% url 'blog_detail' article.pk %}"><i class="fas fa-link"></i></a>
+                                    </figure>
+                                    <div class="lower-content">
+                                        <figure class="admin-thumb"><img
+                                                src="{{ article.author.profile.profile_pic.url }}" alt=""></figure>
+                                        <span class="category">Electronics</span>
+                                        <h2><a href="{% url 'blog_detail' article.pk %}">{{ article.title }}</a></h2>
+                                        <p>{{ article.summary }}</p>
+                                        <span class="post-info">By <a
+                                                href="#">{{ article.author }}</a> - {{ article.date_posted }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="pagination-wrapper centred">
+                            <ul class="pagination clearfix">
+                                <li><a href="category-details.html"><i class="far fa-angle-left"></i>Prev</a></li>
+                                <li><a href="category-details.html" class="current">01</a></li>
+                                <li><a href="category-details.html">02</a></li>
+                                <li><a href="category-details.html">03</a></li>
+                                <li><a href="category-details.html">Next<i class="far fa-angle-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                    <div class="blog-sidebar default-sidebar">
+                        <div class="search-widget sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Search</h3>
+                            </div>
+                            <form action="https://azim.commonsupport.com/Clasifico/blog-2.html" method="post"
+                                  class="search-form default-form">
+                                <div class="form-group">
+                                    <input type="search" name="search-field" placeholder="Search" required="">
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="social-box sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Follow Us On</h3>
+                            </div>
+                            <ul class="social-links clearfix">
+                                <li><a href="blog-2.html"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="blog-2.html"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="blog-2.html"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="blog-2.html"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="blog-2.html"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-category sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Category</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="category-list">
+                                    {% for category in category %}
+                                        <li><a href="#">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-widget sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Older Posts</h3>
+                            </div>
+                            <div class="post-inner">
+                                {% for post in older_posts %}
+                                    <div class="post">
+                                        <figure class="post-thumb"><a href="#"><img src="{{ post.featured_image.url }}"
+                                                                                    alt="{{ post.title }}"></a></figure>
+                                        <h5><a href="#">{{ post.title }}</a></h5>
+                                        <p>{{ post.date_posted }}</p>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        {#                            <div class="tags-widget sidebar-widget">#}
+                        {#                                <div class="widget-title">#}
+                        {#                                    <h3>Popular Tags</h3>#}
+                        {#                                </div>#}
+                        {#                                <div class="widget-content">#}
+                        {#                                    <ul class="tags-list clearfix">#}
+                        {#                                        <li><a href="blog-details.html">Real Estate</a></li>#}
+                        {#                                        <li><a href="blog-details.html">HouseHunting</a></li>#}
+                        {#                                        <li><a href="blog-details.html">Architecture</a></li>#}
+                        {#                                        <li><a href="blog-details.html">Interior</a></li>#}
+                        {#                                        <li><a href="blog-details.html">Sale</a></li>#}
+                        {#                                        <li><a href="blog-details.html">Rent Home</a></li>#}
+                        {#                                        <li><a href="blog-details.html">Listing</a></li>#}
+                        {#                                    </ul>#}
+                        {#                                </div>#}
+                        {#                            </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- sidebar-page-container end -->
+
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- sidebar-page-container -->
+    <section class="sidebar-page-container">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-12 col-sm-12 content-side">
+                    <div class="blog-details-content">
+                        <div class="news-block-one">
+                            <div class="inner-box">
+                                <figure class="image-box">
+                                    <img src="{{ object.featured_image.url }}" alt="">
+                                </figure>
+                                <div class="lower-content">
+                                    <figure class="admin-thumb"><img src="{{ object.author.profile.profile_pic.url }}" alt="">
+                                    </figure>
+                                    <span class="category">{{ object.category }}</span>
+                                    <h2>{{ object.title }}</h2>
+                                    <span class="post-info">By <a href="#">{{ object.author.last_name }}
+                                        {{ object.author.first_name }}</a> - {{ object.date_posted }}</span>
+                                    <div class="text">
+                                        <p>{{ object.content|safe }}</p>
+                                    </div>
+
+
+                                    <div class="post-share-option clearfix">
+                                        <div class="text pull-left">
+                                            <h3>We Are Social On:</h3>
+                                        </div>
+                                        <ul class="social-links pull-right clearfix">
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+{#                        <div class="comment-box">#}
+{#                            <div class="group-title">#}
+{#                                <h3>3 Comments</h3>#}
+{#                            </div>#}
+{#                            <div class="comment">#}
+{#                                <figure class="thumb-box">#}
+{#                                    <img src="assets/images/news/comment-1.png" alt="">#}
+{#                                </figure>#}
+{#                                <div class="comment-inner">#}
+{#                                    <div class="comment-info clearfix">#}
+{#                                        <h5>Rebeka Dawson</h5>#}
+{#                                        <span class="post-date">April 10, 2020</span>#}
+{#                                    </div>#}
+{#                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis#}
+{#                                        nos</p>#}
+{#                                    <a href="blog-details.html" class="reply-btn"><i class="fas fa-share"></i>Reply</a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="comment replay-comment">#}
+{#                                <figure class="thumb-box">#}
+{#                                    <img src="assets/images/news/comment-2.png" alt="">#}
+{#                                </figure>#}
+{#                                <div class="comment-inner">#}
+{#                                    <div class="comment-info clearfix">#}
+{#                                        <h5>Elizabeth Winstead</h5>#}
+{#                                        <span class="post-date">April 09, 2020</span>#}
+{#                                    </div>#}
+{#                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis#}
+{#                                        nos</p>#}
+{#                                    <a href="blog-details.html" class="reply-btn"><i class="fas fa-share"></i>Reply</a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="comment">#}
+{#                                <figure class="thumb-box">#}
+{#                                    <img src="assets/images/news/comment-3.png" alt="">#}
+{#                                </figure>#}
+{#                                <div class="comment-inner">#}
+{#                                    <div class="comment-info clearfix">#}
+{#                                        <h5>Benedict Cumbatch</h5>#}
+{#                                        <span class="post-date">April 08, 2020</span>#}
+{#                                    </div>#}
+{#                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor#}
+{#                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis#}
+{#                                        nos</p>#}
+{#                                    <a href="blog-details.html" class="reply-btn"><i class="fas fa-share"></i>Reply</a>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+                        <div class="comments-form-area">
+                            <div class="group-title">
+                                <h3>Leave a Review</h3>
+                                <p>Your email address will not be published. Required fields are marked *</p>
+                            </div>
+                            <form method="post" action="{% url 'landing_page' %}"
+                                  id="contact-form" class="default-form">
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                        <label>Full Name</label>
+                                        <input type="text" name="username" required="">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                                        <label>Email Address</label>
+                                        <input type="email" name="email" required="">
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                        <label>Phone Number</label>
+                                        <input type="text" name="phone" required="">
+                                    </div>
+                                    <div class="col-lg-6 col-md-12 col-sm-12 form-group">
+                                        <label>Subject</label>
+                                        <input type="text" name="subject" required="">
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                                        <label>Review Title*</label>
+                                        <textarea name="message"></textarea>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 form-group message-btn">
+                                        <button class="theme-btn-one" type="submit" name="submit-form">Submit Now
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
+                    <div class="blog-sidebar default-sidebar">
+                        <div class="search-widget sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Search</h3>
+                            </div>
+                            <form action="https://azim.commonsupport.com/Clasifico/blog-details.html" method="post"
+                                  class="search-form default-form">
+                                <div class="form-group">
+                                    <input type="search" name="search-field" placeholder="Search" required="">
+                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="social-box sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Follow Us On</h3>
+                            </div>
+                            <ul class="social-links clearfix">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="sidebar-category sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Category</h3>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="category-list">
+                                    {% for category in category %}
+                                        <li><a href="#">{{ category.name }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="post-widget sidebar-widget">
+                            <div class="widget-title">
+                                <h3>Recent Posts</h3>
+                            </div>
+                            <div class="post-inner">
+                                {% for article in recent_posts %}
+                                    <div class="post">
+                                    <figure class="post-thumb"><a href="#"><img
+                                            src="{{ article.featured_image.url }}" alt=""></a></figure>
+                                    <h5><a href="#">{{ article.title }}</a></h5>
+                                    <p>{{ article.date_posted }}</p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+{#                        <div class="tags-widget sidebar-widget">#}
+{#                            <div class="widget-title">#}
+{#                                <h3>Popular Tags</h3>#}
+{#                            </div>#}
+{#                            <div class="widget-content">#}
+{#                                <ul class="tags-list clearfix">#}
+{#                                    <li><a href="blog-details.html">Real Estate</a></li>#}
+{#                                    <li><a href="blog-details.html">HouseHunting</a></li>#}
+{#                                    <li><a href="blog-details.html">Architecture</a></li>#}
+{#                                    <li><a href="blog-details.html">Interior</a></li>#}
+{#                                    <li><a href="blog-details.html">Sale</a></li>#}
+{#                                    <li><a href="blog-details.html">Rent Home</a></li>#}
+{#                                    <li><a href="blog-details.html">Listing</a></li>#}
+{#                                </ul>#}
+{#                            </div>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- sidebar-page-container end -->
+
+{% endblock %}
